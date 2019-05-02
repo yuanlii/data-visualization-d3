@@ -101,3 +101,21 @@ var yScale = d3.scaleLinear()
     // scale actual data range to the svg height
     .range([0, svgHeight]);
 ```
+``` javascript
+// barchart
+var barChart = svg.selectAll("rect")
+    .data(dataset)
+    .enter()
+    .append("rect")
+    // keypoint: return svgHeight - d => return svgHeight - yScale(d) 
+    .attr("y", function(d) {
+         return svgHeight - yScale(d) 
+    })
+    .attr("height", function(d) { 
+        return d; 
+    })
+    .attr("width", barWidth - barPadding)
+    .attr("class", "bar")
+    .attr("transform", function (d, i) {
+        var tran
+```
