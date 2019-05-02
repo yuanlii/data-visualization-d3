@@ -1,6 +1,6 @@
 ## Learning notes
 
-### create a barchart 
+### 1. create a barchart 
 
 ![bar_chart](https://github.com/yuanlii/data_visualization_d3/blob/master/img/bar_chart.png)
 
@@ -79,3 +79,36 @@ var barChart = svg.selectAll("rect")
         ```
         the first one is the x axis (append barchart one after another); 
         the second one is the y axis (all start from 0 level - horizontally)
+
+
+* add labels to barchart
+
+```javascript
+var text = svg.selectAll("text")
+.data(dataset)
+.enter()
+.append("text")
+.text(function(d) {
+    return d;
+})
+.attr("y", function(d, i) {
+    return svgHeight - d - 2;
+})
+.attr("x", function(d, i) {
+    return barWidth * i;
+})
+.attr("fill", "#A64C38");
+```
+
+    * Text has special functions, e.g, 
+
+    ```javascript
+    .text(function(d) {
+        return d;
+    })
+    ```
+    and special attributes,e.g,
+    
+    ```javascript
+    .attr("fill", "#A64C38");
+    ```
