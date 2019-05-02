@@ -102,13 +102,11 @@ var text = svg.selectAll("text")
 
    * Text has special functions, e.g, 
 
-    ```javascript
     .text(function(d) {
         return d;
     })
-    ```
+    
    * and special attributes,e.g,
    
-    ```javascript
     .attr("fill", "#A64C38");
-    ```
+   
