@@ -22,14 +22,14 @@ var barChart = svg.selectAll("rect")
     });
 ```
 
-* first select all rectangle objects in svg:
-```javascript
-var barChart = svg.selectAll("rect")
-```
+1. first select all rectangle objects in svg;
+   if rectangle does not exist in svg, then we would append rect one by one in svg. 
+    ```javascript
+    var barChart = svg.selectAll("rect")
+    ```
    * need to initialize an svg object in html file first, using 
    ```html
    <body>
-        
         <h1>First heading</h1>
         <svg class = "bar-chart"></svg>
         
@@ -37,11 +37,13 @@ var barChart = svg.selectAll("rect")
         <script src="index.js"></script>
     </body>
    ```
-   * if rectangles not exist, then we would append them one by one later. Second step is to link the rectangle with the data that we specifies using 
+   * Second step is to link the rectangles to the dataset
+    ```javascript
+    var dataset = [80, 100, 56, 120, 180, 30, 40, 120, 160];
+    ```
+2.
 
-```javascript
-var dataset = [80, 100, 56, 120, 180, 30, 40, 120, 160];
-```
+
 
 
 * "transform" function: 
