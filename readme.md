@@ -107,8 +107,8 @@ var text = svg.selectAll("text")
         return d;
     })
     ```
-    and special attributes,e.g,
-    
+   * and special attributes,e.g,
+   
     ```javascript
     .attr("fill", "#A64C38");
     ```
