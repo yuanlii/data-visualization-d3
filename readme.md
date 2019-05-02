@@ -2,7 +2,7 @@
 
 * create a barchart that looks like this:
 ![bar_chart]
-()
+(https://github.com/yuanlii/data_visualization_d3/blob/master/img/bar_chart.png)
 
 ```javascript
 var barChart = svg.selectAll("rect")
