@@ -21,6 +21,33 @@ var barChart = svg.selectAll("rect")
         return "translate("+ translate +")";
     });
 ```
+
+* first select all rectangle objects in svg:
+```javascript
+var barChart = svg.selectAll("rect")
+```
+   * need to initialize an svg object in html file first, using 
+   ```html
+   <body>
+        
+        <h1>First heading</h1>
+        <svg class = "bar-chart"></svg>
+        
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="index.js"></script>
+    </body>
+   ```
+   * if rectangles not exist, then we would append them one by one later. Second step is to link the rectangle with the data that we specifies using 
+
+```javascript
+var dataset = [80, 100, 56, 120, 180, 30, 40, 120, 160];
+```
+
+
 * "transform" function: 
-do not want the barchart to start from the same position;
-translate = [barWidth * i, 0] -> the first one is the x axis (append barchart one after another); the second one is the y axis (all start from 0 level)
+since we do not want the barchart to start from the same position;
+```javascript
+
+translate = [barWidth * i, 0] 
+```
+-> the first one is the x axis (append barchart one after another); the second one is the y axis (all start from 0 level)
