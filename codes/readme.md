@@ -1,8 +1,8 @@
 ### Learning notes
 
-* "transform" function: 
-since we do not want all barcharts to start from the same position;
-translate = [barWidth * i, 0] -> the first one is the x axis (append barchart one after another); the second one is the y axis (all start from 0 level)
+* create a barchart that looks like this:
+![bar_chart]
+()
 
 ```javascript
 var barChart = svg.selectAll("rect")
@@ -21,11 +21,6 @@ var barChart = svg.selectAll("rect")
         return "translate("+ translate +")";
     });
 ```
-
-```javascript
-.attr("transform", function (d, i) {
-        var translate = [barWidth * i, 0]; 
-        return "translate("+ translate +")";
-    });
-```
-
+* "transform" function: 
+do not want the barchart to start from the same position;
+translate = [barWidth * i, 0] -> the first one is the x axis (append barchart one after another); the second one is the y axis (all start from 0 level)
