@@ -100,7 +100,7 @@ var text = svg.selectAll("text")
 .attr("fill", "#A64C38");
 ```
 
-    * Text has special functions, e.g, 
+   * Text has special functions, e.g, 
 
     ```javascript
     .text(function(d) {
