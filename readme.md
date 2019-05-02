@@ -88,6 +88,7 @@ var text = svg.selectAll("text")
 .data(dataset)
 .enter()
 .append("text")
+// different from rectangle, we can use ".text" to handle text data 
 .text(function(d) {
     return d;
 })
@@ -97,6 +98,7 @@ var text = svg.selectAll("text")
 .attr("x", function(d, i) {
     return barWidth * i;
 })
+// can add "fill" attribute directly
 .attr("fill", "#A64C38");
 ```
 
@@ -106,10 +108,6 @@ var text = svg.selectAll("text")
         return d;
     })
     
-   * and special attributes,e.g,
-   
-    .attr("fill", "#A64C38");
-   
    
 * .css class can be embedded as attribute directly in rectangles created, using:
 
