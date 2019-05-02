@@ -1,7 +1,8 @@
-### Learning notes
+## Learning notes
 
-create a barchart that looks like this:
+### create a barchart 
 
+example barchar:
 ![bar_chart](https://github.com/yuanlii/data_visualization_d3/blob/master/img/bar_chart.png)
 
 ```javascript
