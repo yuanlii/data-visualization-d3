@@ -79,3 +79,6 @@ var text = svg.selectAll("text")
 // can add "fill" attribute directly
 .attr("fill", "#A64C38");
 ```
+
+after the previous steps, our barchart now looks like this:
+![barchart2](https://github.com/yuanlii/data_visualization_d3/blob/master/img/barchart2.png)
