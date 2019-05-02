@@ -30,11 +30,27 @@ var barChart = svg.selectAll("rect")
         return d; 
     })
     .attr("width", barWidth - barPadding)
+    .attr("class", "bar")
     .attr("transform", function (d, i) {
         var translate = [barWidth * i, 0]; 
         return "translate("+ translate +")";
     });
 
+// barchart add labels
+var text = svg.selectAll("text")
+    .data(dataset)
+    .enter()
+    .append("text")
+    .text(function(d) {
+        return d;
+    })
+    .attr("y", function(d, i) {
+        return svgHeight - d - 2;
+    })
+    .attr("x", function(d, i) {
+        return barWidth * i;
+    })
+    .attr("fill", "#A64C38");
 
 
 
