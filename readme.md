@@ -5,10 +5,14 @@
 ![bar_chart](https://github.com/yuanlii/data_visualization_d3/blob/master/img/bar_chart.png)
 
 ```javascript
+// first select all rectangles existing in svg; if not exist any, would get an empty selection
 var barChart = svg.selectAll("rect")
+    // link selection to dataset
     .data(dataset)
+    // get data from dataset iteratively, and append rectangle one by one
     .enter()
     .append("rect")
+    // set attributes of rectangle
     .attr("y", function(d) {
          return svgHeight - d 
     })
@@ -16,18 +20,15 @@ var barChart = svg.selectAll("rect")
         return d; 
     })
     .attr("width", barWidth - barPadding)
+    // add pre-defined css class to style bar (.css class can be embedded as attribute directly)
+    .attr("class", "bar")
+    // keypoint: since we do not want the barchart to start from the same position, so we need to specify different positions for each bar manually
+        the second one is the y axis (all start from 0 level - horizontally)
     .attr("transform", function (d, i) {
         var translate = [barWidth * i, 0]; 
         return "translate("+ translate +")";
     });
 ```
-
-1. first select all rectangle objects in svg;
-   if rectangle does not exist in svg, then we would append rect one by one in svg. 
-   
-    ```javascript
-    var barChart = svg.selectAll("rect")
-    ```
     
    * need to initialize an svg object in html file first, using 
    
@@ -41,38 +42,14 @@ var barChart = svg.selectAll("rect")
     </body>
    ```
    
-   * Second step is to link the rectangles to the dataset
+   * before creating barchart, need to have a dataset defined as:
    
     ```javascript
     var dataset = [80, 100, 56, 120, 180, 30, 40, 120, 160];
     ```
-    
-2. iterate over each data point, and append rectangle one by one
 
-    ```javascript
-    .data(dataset)
-    .enter()
-    .append("rect")
-    ```
-    
-3. specify attributes of the rectangle
-
-    ```javascript
-    .attr("y", function(d) {
-         return svgHeight - d 
-    })
-    .attr("height", function(d) { 
-        return d; 
-    })
-    .attr("width", barWidth - barPadding)
-    .attr("transform", function (d, i) {
-        var translate = [barWidth * i, 0]; 
-        return "translate("+ translate +")";
-    });
-    ```
-
-    * "transform" function: 
-       since we do not want the barchart to start from the same position
+   * "transform" function: 
+      since we do not want the barchart to start from the same position
        
         ```javascript
         translate = [barWidth * i, 0] 
@@ -81,7 +58,7 @@ var barChart = svg.selectAll("rect")
         the second one is the y axis (all start from 0 level - horizontally)
 
 
-* add labels to barchart
+* add labels to barchart, code example: 
 
 ```javascript
 var text = svg.selectAll("text")
@@ -101,33 +78,3 @@ var text = svg.selectAll("text")
 // can add "fill" attribute directly
 .attr("fill", "#A64C38");
 ```
-
-   * Text has special functions, e.g, 
-
-    .text(function(d) {
-        return d;
-    })
-    
-   
-* .css class can be embedded as attribute directly in rectangles created, using:
-
-    ```javascript
-    // barchart
-    var barChart = svg.selectAll("rect")
-        .data(dataset)
-        .enter()
-        .append("rect")
-        .attr("y", function(d) {
-             return svgHeight - d 
-        })
-        .attr("height", function(d) { 
-            return d; 
-        })
-        .attr("width", barWidth - barPadding)
-        // add .css class to style bar
-        .attr("class", "bar")
-        .attr("transform", function (d, i) {
-            var translate = [barWidth * i, 0]; 
-            return "translate("+ translate +")";
-        });
-     ```
