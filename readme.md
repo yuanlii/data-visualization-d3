@@ -110,3 +110,26 @@ var text = svg.selectAll("text")
    
     .attr("fill", "#A64C38");
    
+   
+* .css class can be embedded as attribute directly in rectangles created, using:
+
+    ```javascript
+    // barchart
+    var barChart = svg.selectAll("rect")
+        .data(dataset)
+        .enter()
+        .append("rect")
+        .attr("y", function(d) {
+             return svgHeight - d 
+        })
+        .attr("height", function(d) { 
+            return d; 
+        })
+        .attr("width", barWidth - barPadding)
+        // add .css class to style bar
+        .attr("class", "bar")
+        .attr("transform", function (d, i) {
+            var translate = [barWidth * i, 0]; 
+            return "translate("+ translate +")";
+        });
+     ```
