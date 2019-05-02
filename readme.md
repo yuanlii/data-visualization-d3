@@ -56,6 +56,17 @@ var barChart = svg.selectAll("rect")
         ```
         the first one is the x axis (append barchart one after another); 
         the second one is the y axis (all start from 0 level - horizontally)
+        
+   * .css file looks like:
+   ```css
+        .bar-chart {
+        background-color: #C7D9D9;
+        }
+
+        .bar {
+             fill: #115D8C;
+             }
+     ```
 
 --------------------------------
 
