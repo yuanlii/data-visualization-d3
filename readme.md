@@ -57,8 +57,10 @@ var barChart = svg.selectAll("rect")
         the first one is the x axis (append barchart one after another); 
         the second one is the y axis (all start from 0 level - horizontally)
 
+--------------------------------
 
-* add labels to barchart, code example: 
+Second, after we created the barcharts, we can add labels to barchart.
+code example: 
 
 ```javascript
 var text = svg.selectAll("text")
