@@ -107,12 +107,13 @@ var barChart = svg.selectAll("rect")
     .data(dataset)
     .enter()
     .append("rect")
-    // keypoint: return svgHeight - d => return svgHeight - yScale(d) 
+    // keypoint: change return svgHeight - d => return svgHeight - yScale(d) 
     .attr("y", function(d) {
          return svgHeight - yScale(d) 
     })
+    // change: return d => return yScale(d) => original d from dataset needs all to be scaled
     .attr("height", function(d) { 
-        return d; 
+        return yScale(d); 
     })
     .attr("width", barWidth - barPadding)
     .attr("class", "bar")
