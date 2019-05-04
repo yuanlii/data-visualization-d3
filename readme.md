@@ -120,3 +120,6 @@ var barChart = svg.selectAll("rect")
     .attr("transform", function (d, i) {
         var tran
 ```
+
+Current barchart looks like:
+
