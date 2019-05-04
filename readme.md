@@ -122,4 +122,4 @@ var barChart = svg.selectAll("rect")
 ```
 
 Current barchart looks like:
-
+![barchar_scaled](https://github.com/yuanlii/data_visualization_d3/blob/master/img/barchart_scaled.png)
