@@ -79,3 +79,47 @@ var text = svg.selectAll("text")
 // can add "fill" attribute directly
 .attr("fill", "#A64C38");
 ```
+
+after the previous steps, our barchart now looks like this:
+![barchart2](https://github.com/yuanlii/data_visualization_d3/blob/master/img/barchart2.png)
+
+
+what if our data scale is much smaller? e.g., 
+
+```javascript
+// var dataset = [80, 100, 56, 120, 180, 30, 40, 120, 160];
+var dataset = [1,2,3,4,5];
+```
+
+So we would need to use "Scale" function.
+
+```javascript
+// adding scale to y    
+var yScale = d3.scaleLinear()
+    // get the actual range from the dataset
+    .domain([0, d3.max(dataset)])
+    // scale actual data range to the svg height
+    .range([0, svgHeight]);
+```
+``` javascript
+// barchart
+var barChart = svg.selectAll("rect")
+    .data(dataset)
+    .enter()
+    .append("rect")
+    // keypoint: change return svgHeight - d => return svgHeight - yScale(d) 
+    .attr("y", function(d) {
+         return svgHeight - yScale(d) 
+    })
+    // change: return d => return yScale(d) => original d from dataset needs all to be scaled
+    .attr("height", function(d) { 
+        return yScale(d); 
+    })
+    .attr("width", barWidth - barPadding)
+    .attr("class", "bar")
+    .attr("transform", function (d, i) {
+        var tran
+```
+
+Current barchart looks like:
+
