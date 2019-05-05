@@ -161,9 +161,12 @@ var y_axis = d3.axisLeft()
 
 // append group to svg element
 svg.append("g")
+    // here, 50 -> horizontal_position; 10 -> vertical_position
     .attr("transform", "translate(50, 10)")
     .call(y_axis);
 
+// keypoint here
+// to be more general, in order to connect X axis to Y axis, horizontal position should be the same,  which decides the horizontal position of axis; yet vertical_position, should follow: diff(vertical_position of X axis, length of Y axis) = vertical position of Y axis. 
 var xAxisTranslate = svgHeight - 20;
 
 svg.append("g")
@@ -175,10 +178,10 @@ svg.append("g")
 
 ![axes expla.](https://github.com/yuanlii/data_visualization_d3/blob/master/img/axes_explanation.png)
 
-In order to connect X axis to y axis, diff(position of X axis - length of y axis) = 10, since y axis starts at a position of y tick=10 -> to be more general, in order to connect X axis to Y axis, the first element in the attr("transform","translate(horizontal_position,vertical_position)") should be the same, which decides the horizontal position of axis; yet vertical_position, should follow: diff(vertical_position of X axis, length of Y axis) = vertical position of Y axis. Thereby setting:
+To sum up, in order to connect X axis to Y axis, difference between [vertical position of X axis] and the [length of Y axis] should be the value of vertical position of Y axis (in this example, it's 10)
 
-``` javascript
-var xAxisTranslate = svgHeight - 20;
+```javascript
+attr("transform","translate(horizontal_position,vertical_position)") 
 ```
 
 
