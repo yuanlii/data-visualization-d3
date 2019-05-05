@@ -178,7 +178,7 @@ svg.append("g")
 
 ![axes expla.](https://github.com/yuanlii/data_visualization_d3/blob/master/img/axes_explanation.png)
 
-To sum up, in order to connect X axis to Y axis, difference between [vertical position of X axis] and the [length of Y axis] should be the value of vertical position of Y axis (in this example, it's 10)
+To sum up, in order to connect X axis to Y axis, difference between _(vertical position of X axis)_ and the _(length of Y axis)_ should be the value of vertical position of Y axis (in this example, it's 10)
 
 ```javascript
 attr("transform","translate(horizontal_position,vertical_position)") 
