@@ -311,3 +311,5 @@ arc.append("text")
 ```
 
 outcome looks like:
+
+![piechart](https://github.com/yuanlii/data_visualization_d3/blob/master/img/pie_chart.png)
