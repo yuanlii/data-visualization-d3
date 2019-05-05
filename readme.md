@@ -172,5 +172,5 @@ svg.append("g")
 
 .attr("transform", "translate(XX,XX)" is used to set the position of the shape, you may think of a brush, and such setting decides where you should lay your pen. Explanations show below.
 
-|[axes expla.](https://github.com/yuanlii/data_visualization_d3/blob/master/img/axes_explanation.png)
+![axes expla.](https://github.com/yuanlii/data_visualization_d3/blob/master/img/axes_explanation.png)
 
