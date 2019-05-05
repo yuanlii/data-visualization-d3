@@ -1,9 +1,7 @@
 
-// create a new variable called 'data'
 var dataset = [80, 100, 56, 120, 180, 30, 40, 120, 160];
 
 var svgWidth = 500, svgHeight = 300;
-var barWidth = (svgWidth / dataset.length);
 
 var svg = d3.select('svg')
     .attr("width", svgWidth)
@@ -17,7 +15,8 @@ var xScale = d3.scaleLinear()
 // adding scale to y    
 var yScale = d3.scaleLinear()
     .domain([0, d3.max(dataset)])
-    .range([0,svgHeight]);
+    // note the order change
+    .range([svgHeight,0]);
 
 // add x axis
 var x_axis = d3.axisBottom()
@@ -27,7 +26,7 @@ var x_axis = d3.axisBottom()
 var y_axis = d3.axisLeft()
     .scale(yScale);
 
-// append to svg element
+// append group to svg element
 svg.append("g")
     .attr("transform", "translate(50, 10)")
     .call(y_axis);
