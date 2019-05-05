@@ -133,7 +133,7 @@ Style settings in index.css:
 .bar {
     fill: #E1C340; 
 }
-``
+```
 
 
 ### 2. Create Axes
