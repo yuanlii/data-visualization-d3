@@ -90,6 +90,8 @@ what if our data scale is much smaller? e.g.,
 // var dataset = [80, 100, 56, 120, 180, 30, 40, 120, 160];
 var dataset = [1,2,3,4,5];
 ```
+
+
 #### Scale
 So we would need to use "Scale" function.
 
