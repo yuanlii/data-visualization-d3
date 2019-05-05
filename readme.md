@@ -227,8 +227,15 @@ var circle = svg.append("circle")
     // set radius
     .attr("r", 80)
     .attr("fill", "#7CE8D5"); 
-    
 ```
+other style specification in index.css:
+
+```css
+.svg-container {
+    background-color: #FFC988;
+    }
+```
+
 the output looks like below.
 
 ![svg elements](https://github.com/yuanlii/data_visualization_d3/blob/master/img/svg_elems.png)
