@@ -15,14 +15,14 @@ var xScale = d3.scaleLinear()
 // adding scale to y    
 var yScale = d3.scaleLinear()
     .domain([0, d3.max(dataset)])
-    // note the order change
-    .range([svgHeight,0]);
+    // note: the order changes to make sure the value is increasing from the bottom level
+    .range([svgHeight - 30,0]);
 
-// add x axis
+// add x axis using axisBottom()
 var x_axis = d3.axisBottom()
     .scale(xScale);
 
-// add y axis
+// add y axis using axisLeft()
 var y_axis = d3.axisLeft()
     .scale(yScale);
 
@@ -35,6 +35,7 @@ var xAxisTranslate = svgHeight - 20;
 
 svg.append("g")
     .attr("transform", "translate(50, " + xAxisTranslate  +")")
+    // .attr("transform", "translate(50, 20)")
     .call(x_axis);
 
 
