@@ -147,18 +147,18 @@ var xScale = d3.scaleLinear()
 // adding scale to y    
 var yScale = d3.scaleLinear()
     .domain([0, d3.max(dataset)])
-    // note: the order changes to make sure the value is increasing from the bottom level
+    // note: the order changes to make sure the value is increasing bottom-up
     .range([svgHeight,0]);
 
-// add x axis using axisBottom()
+// add x axis using axisBottom() - an example of d3 API
 var x_axis = d3.axisBottom()
     .scale(xScale);
 
-// add y axis using axisLeft()
+// add y axis using axisLeft() 
 var y_axis = d3.axisLeft()
     .scale(yScale);
 
-// append group to svg element
+// appends a 'g' element to the SVG. g element is used to group SVG shapes together
 svg.append("g")
     .attr("transform", "translate(50, 10)")
     .call(y_axis);
