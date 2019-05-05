@@ -57,7 +57,7 @@ var barChart = svg.selectAll("rect")
         the first one is the x axis (append barchart one after another); 
         the second one is the y axis (all start from 0 level - horizontally)
         
-
+#### Add Labels 
 Second, after we created the barcharts, we can add labels to barchart.
 code example: 
 
@@ -90,7 +90,7 @@ what if our data scale is much smaller? e.g.,
 // var dataset = [80, 100, 56, 120, 180, 30, 40, 120, 160];
 var dataset = [1,2,3,4,5];
 ```
-
+#### Scale
 So we would need to use "Scale" function.
 
 ```javascript
@@ -123,3 +123,4 @@ var barChart = svg.selectAll("rect")
 
 Current barchart looks like:
 
+![barchar_scaled](https://github.com/yuanlii/data_visualization_d3/blob/master/img/barchart_scaled.png)
