@@ -130,6 +130,7 @@ Current barchart looks like:
 ![Axes](https://github.com/yuanlii/data_visualization_d3/blob/master/img/axes.png)
 
 complete codes:
+
 ``` javascript
 var dataset = [80, 100, 56, 120, 180, 30, 40, 120, 160];
 
@@ -147,18 +148,18 @@ var xScale = d3.scaleLinear()
 // adding scale to y    
 var yScale = d3.scaleLinear()
     .domain([0, d3.max(dataset)])
-    // note: the order changes to make sure the value is increasing bottom-up
-    .range([svgHeight,0]);
+    // note: the order changes to make sure the value is increasing from the bottom level
+    .range([svgHeight - 30,0]);
 
-// add x axis using axisBottom() - an example of d3 API
+// add x axis using axisBottom()
 var x_axis = d3.axisBottom()
     .scale(xScale);
 
-// add y axis using axisLeft() 
+// add y axis using axisLeft()
 var y_axis = d3.axisLeft()
     .scale(yScale);
 
-// appends a 'g' element to the SVG. g element is used to group SVG shapes together
+// append group to svg element
 svg.append("g")
     .attr("transform", "translate(50, 10)")
     .call(y_axis);
@@ -173,4 +174,11 @@ svg.append("g")
 .attr("transform", "translate(XX,XX)" is used to set the position of the shape, you may think of a brush, and such setting decides where you should lay your pen. Explanations show below.
 
 ![axes expla.](https://github.com/yuanlii/data_visualization_d3/blob/master/img/axes_explanation.png)
+
+In order to connect X axis to y axis, diff(position of X axis - length of y axis) = 10, since y axis starts at a position of y tick=10 -> to be more general, in order to connect X axis to Y axis, the first element in the attr("transform","translate(horizontal_position,vertical_position)") should be the same, which decides the horizontal position of axis; yet vertical_position, should follow: diff(vertical_position of X axis, length of Y axis) = vertical position of Y axis. Thereby setting:
+
+``` javascript
+var xAxisTranslate = svgHeight - 20;
+```
+
 
