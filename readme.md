@@ -125,6 +125,14 @@ Current barchart looks like:
 
 ![barchar_scaled](https://github.com/yuanlii/data_visualization_d3/blob/master/img/barchart_scaled.png)
 
+Style settings in index.css:
+
+```css
+.bar {
+    fill: #E1C340; 
+}
+``
+
 
 ### 2. Create Axes
 ![Axes](https://github.com/yuanlii/data_visualization_d3/blob/master/img/axes.png)
