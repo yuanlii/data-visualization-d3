@@ -127,7 +127,7 @@ Current barchart looks like:
 
 
 ### 2. Create Axes
-[Axes](https://github.com/yuanlii/data_visualization_d3/blob/master/img/axes.png)
+![Axes](https://github.com/yuanlii/data_visualization_d3/blob/master/img/axes.png)
 
 complete codes:
 ``` javascript
