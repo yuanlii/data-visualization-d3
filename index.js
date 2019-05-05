@@ -1,39 +1,53 @@
-var svgWidth = 600, svgHeight = 500;
-var svg = d3.select("svg")
+var data = [
+    {"platform": "Android", "percentage": 40.11}, 
+    {"platform": "Windows", "percentage": 36.69},
+    {"platform": "iOS", "percentage": 13.06}
+];
+
+var svgWidth = 500, svgHeight = 300, radius =  Math.min(svgWidth, svgHeight) / 2;
+
+// first create a svg object
+var svg = d3.select('svg')
     .attr("width", svgWidth)
-    .attr("height", svgHeight)
-    .attr("class", "svg-container");
+    .attr("height", svgHeight);
 
-// append a line to svg
-// for line, we need to specify x1,y1, x2,y2 for the positions of the line
-// if it's horizontal line, y ticks remain the same; if vertical line, x ticks remain the same, and y ticks vary
-var line = svg.append("line")
-    .attr("x1", 100)
-    .attr("x2", 500)
-    .attr("y1", 50)
-    .attr("y2", 50)
-    // set the color of the line, using "stroke"
-    .attr("stroke", "red")
-    // set the width of the line, using "stroke-width"
-    .attr("stroke-width", 5);
+// Create group element to hold pie chart    
+var g = svg.append("g")
+    .attr("transform", "translate(" + radius + "," + radius + ")") ;
 
-// append a rect to svg
-var rect = svg.append("rect")
-    // specify where to start drawing the rectangle
-    .attr("x", 100)
-    .attr("y", 100)
-    // specify width and height of the rectangle
-    .attr("width", 200)
-    .attr("height", 100)
-    // specify fill color
-    .attr("fill", "#9B95FF");
+// create color object
+var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-// append a circle to svg
-var circle = svg.append("circle")
-    // set coordinates of the circle
-    .attr("cx", 200)
-    .attr("cy", 300)
-    // set radius
-    .attr("r", 80)
-    .attr("fill", "#7CE8D5"); 
-    
+// create a piechart, using d3.pie()
+var pie = d3.pie().value(function(d) { 
+    return d.percentage; 
+});
+
+// create arcs using d3.arc()
+var path = d3.arc()
+    .outerRadius(radius)
+    .innerRadius(0);
+
+// iterate over each data point, and create an arc object
+var arc = g.selectAll("arc")
+    .data(pie(data))
+    .enter()
+    .append("g");
+
+// each arc appends a path, filled by percentaged size
+arc.append("path")
+    .attr("d", path)
+    .attr("fill", function(d) { return color(d.data.percentage); });
+
+// add label
+var label = d3.arc()
+    .outerRadius(radius)
+    .innerRadius(0);
+
+arc.append("text")
+    .attr("transform", function(d) { 
+        // make label positioned at the center
+        return "translate(" + label.centroid(d) + ")"; 
+    })
+    .attr("text-anchor", "middle")
+    .text(function(d) { return d.data.platform+":"+d.data.percentage+"%"; });
