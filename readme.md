@@ -229,5 +229,8 @@ var circle = svg.append("circle")
     .attr("fill", "#7CE8D5"); 
     
 ```
+the output looks like below.
+
+![svg elements](https://github.com/yuanlii/data_visualization_d3/blob/master/img/svg_elems.png)
 
 
