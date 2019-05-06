@@ -415,7 +415,21 @@ outcome looks like:
 
 ### More Learning
 
+* create an axis
 
+``` javascript
+/**
+ * Creates an axis
+ */
+
+// domain - lists the actual range of data to display; range - controls the actual width of axis 
+var scale = d3.scaleLinear().domain([0, 1000]).range([0, 1000]);
+
+var axis = d3.axisBottom().scale(scale);
+
+d3.select('.axis')
+    .call(axis);
+``` 
 
 
 
