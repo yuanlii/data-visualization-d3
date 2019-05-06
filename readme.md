@@ -418,10 +418,6 @@ outcome looks like:
 * create an axis
 
 ``` javascript
-/**
- * Creates an axis
- */
-
 // domain - lists the actual range of data to display; range - controls the actual width of axis 
 var scale = d3.scaleLinear().domain([0, 1000]).range([0, 1000]);
 
@@ -431,5 +427,23 @@ d3.select('.axis')
     .call(axis);
 ``` 
 
+* create an axis with special formatting
 
+```javascript
+var scale = d3.scaleLinear().domain([0, 1000000]).range([0, 600]);
+// can define a variable of special format of tick labels 
+var format = d3.format(",");
+
+// axisTop specifies the tick labels be positioned above the axis
+var axis = d3.axisTop().scale(scale)
+    .tickFormat(function(d) {
+        return '£' + format(d);
+    })
+    // specify the number of tick labels of the axis
+    .ticks(5);
+
+// finally, to evoke the commands defined 
+d3.select('.axis')
+    .call(axis);
+```
 
