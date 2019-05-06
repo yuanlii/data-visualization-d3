@@ -1,53 +1,88 @@
-var data = [
-    {"platform": "Android", "percentage": 40.11}, 
-    {"platform": "Windows", "percentage": 36.69},
-    {"platform": "iOS", "percentage": 13.06}
-];
+//API to fetch historical data of Bitcoin Price Index
+const api = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2017-12-31&end=2018-04-01';
 
-var svgWidth = 500, svgHeight = 300, radius =  Math.min(svgWidth, svgHeight) / 2;
+/**
+ * Loading data from API when DOM Content has been loaded'.
+ */
+document.addEventListener("DOMContentLoaded", function(event) {
+fetch(api)
+    .then(function(response) { return response.json(); })
+    .then(function(data) {
+        var parsedData = parseData(data);
+        drawChart(parsedData);
+    })
+    .catch(function(err) { console.log(err); })
+});
 
-// first create a svg object
+/**
+ * Parse data into key-value pairs
+ * @param {object} data Object containing historical data of API
+ */
+function parseData(data) {
+    var arr = [];
+    for (var i in data.bpi) {
+        arr.push({
+            date: new Date(i), //date
+            value: +data.bpi[i] //convert string to number
+        });
+    }
+    return arr;
+}
+
+/**
+ * Creates a chart using D3
+ * @param {object} data Object containing historical data of API
+ */
+function drawChart(data) {
+var svgWidth = 600, svgHeight = 400;
+// can define values first, the used later
+var margin = { top: 20, right: 20, bottom: 30, left: 50 };
+var width = svgWidth - margin.left - margin.right;
+var height = svgHeight - margin.top - margin.bottom;
+
 var svg = d3.select('svg')
     .attr("width", svgWidth)
     .attr("height", svgHeight);
-
-// Create group element to hold pie chart    
+    
 var g = svg.append("g")
-    .attr("transform", "translate(" + radius + "," + radius + ")") ;
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-// create color object
-var color = d3.scaleOrdinal(d3.schemeCategory10);
+// x-axis is a time-series axis, using d3.scaleTime()
+var x = d3.scaleTime()
+    .rangeRound([0, width]);
 
-// create a piechart, using d3.pie()
-var pie = d3.pie().value(function(d) { 
-    return d.percentage; 
-});
+var y = d3.scaleLinear()
+    .rangeRound([height, 0]);
 
-// create arcs using d3.arc()
-var path = d3.arc()
-    .outerRadius(radius)
-    .innerRadius(0);
+var line = d3.line()
+    .x(function(d) { return x(d.date)})
+    .y(function(d) { return y(d.value)})
+    x.domain(d3.extent(data, function(d) { return d.date }));
+    y.domain(d3.extent(data, function(d) { return d.value }));
 
-// iterate over each data point, and create an arc object
-var arc = g.selectAll("arc")
-    .data(pie(data))
-    .enter()
-    .append("g");
+g.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x))
+    .select(".domain")
+    .remove();
 
-// each arc appends a path, filled by percentaged size
-arc.append("path")
-    .attr("d", path)
-    .attr("fill", function(d) { return color(d.data.percentage); });
+g.append("g")
+    .call(d3.axisLeft(y))
+    .append("text")
+    .attr("fill", "#000")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", "0.71em")
+    .attr("text-anchor", "end")
+    .text("Price ($)");
 
-// add label
-var label = d3.arc()
-    .outerRadius(radius)
-    .innerRadius(0);
+g.append("path")
+    .datum(data)
+    .attr("fill", "none")
+    .attr("stroke", "steelblue")
+    .attr("stroke-linejoin", "round")
+    .attr("stroke-linecap", "round")
+    .attr("stroke-width", 1.5)
+    .attr("d", line);
+}
 
-arc.append("text")
-    .attr("transform", function(d) { 
-        // make label positioned at the center
-        return "translate(" + label.centroid(d) + ")"; 
-    })
-    .attr("text-anchor", "middle")
-    .text(function(d) { return d.data.platform+":"+d.data.percentage+"%"; });
