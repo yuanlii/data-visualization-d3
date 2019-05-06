@@ -408,5 +408,7 @@ g.append("path")
     .attr("d", line);
 }
 ```
+outcome looks like:
 
+![timeseries chart](https://github.com/yuanlii/data_visualization_d3/blob/master/img/timeseries_chart.png)
 
