@@ -417,6 +417,8 @@ outcome looks like:
 
 * create an axis
 
+![axis](https://github.com/yuanlii/data_visualization_d3/blob/master/img/axes_2.png)
+
 ``` javascript
 // domain - lists the actual range of data to display; range - controls the actual width of axis 
 var scale = d3.scaleLinear().domain([0, 1000]).range([0, 1000]);
@@ -448,6 +450,8 @@ d3.select('.axis')
 ```
 
 * create a line chart 
+
+![linechart](https://github.com/yuanlii/data_visualization_d3/blob/master/img/linechart.png)
 
 ```javascript
 // data is an array of co-ordinates
@@ -495,6 +499,7 @@ also, with css setting:
 ```
 
 * create a natural cubic spline
+![cubic spline](https://github.com/yuanlii/data_visualization_d3/blob/master/img/natual_cubic_spline.png)
 
 ```javascript
 var data = [[0, 50], [100, 80], [200, 40], [300, 60], [400, 30]];
