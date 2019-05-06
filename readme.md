@@ -486,4 +486,10 @@ Notice that in html should have setting accordingly.
     </body>
 </html>
 ```
-
+also, with css setting:
+```css
+.path {
+    fill: none;
+    stroke: #aaa;
+    }
+```
