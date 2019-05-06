@@ -447,3 +447,43 @@ d3.select('.axis')
     .call(axis);
 ```
 
+* create a line chart 
+
+```javascript
+// data is an array of co-ordinates
+var data = [[0, 50], [100, 80], [200, 40], [300, 60], [400, 30]];
+
+// construct a line generator:
+// a function that accepts an array of co-ordinates and outputs a path data string.
+var lineGenerator = d3.line();
+
+var pathString = lineGenerator(data);
+// pathString is "M0,80L100,100L200,30L300,50L400,40L500,80"
+
+// create a path element
+d3.select('path')
+    // set the attribute of path elem to the pathString
+	.attr('d', pathString);
+```
+
+Notice that in html should have setting accordingly.
+
+```html
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <title>Learn D3.js</title>
+    </head>
+    <body>
+        <!-- specify the width and height of the svg -->
+        <svg width="700" height="1000">
+            <!-- using the path style defined in css -->
+            <path class = path transform="translate(50, 50)" />
+        </svg>
+        
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>
+```
+
