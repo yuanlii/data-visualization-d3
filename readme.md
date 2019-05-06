@@ -415,6 +415,7 @@ outcome looks like:
 
 ### More Learning
 
+
 * create an axis
 
 ![axis](https://github.com/yuanlii/data_visualization_d3/blob/master/img/axes_2.png)
@@ -430,6 +431,8 @@ d3.select('.axis')
 ``` 
 
 * create an axis with special formatting
+
+![axis_special_format](https://github.com/yuanlii/data_visualization_d3/blob/master/img/axis_with_special_formatting.png)
 
 ```javascript
 var scale = d3.scaleLinear().domain([0, 1000000]).range([0, 600]);
@@ -499,6 +502,7 @@ also, with css setting:
 ```
 
 * create a natural cubic spline
+
 ![cubic spline](https://github.com/yuanlii/data_visualization_d3/blob/master/img/natual_cubic_spline.png)
 
 ```javascript
