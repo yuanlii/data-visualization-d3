@@ -544,3 +544,4 @@ d3.select("body").transition()
     .each("start", function() { d3.select(this).style("color", "green"); })
     .style("color", "red");
 ```
+TODO: [tutorial docuemntation](https://bost.ocks.org/mike/transition/)
