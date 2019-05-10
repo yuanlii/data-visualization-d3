@@ -519,7 +519,7 @@ d3.select('path')
 	.attr('d', pathString);
 ```
 
-#### transition
+### Transition
 
 1. selectAll(…).transition() defines several transitions
 2. each transition runs independantly
