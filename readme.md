@@ -518,3 +518,29 @@ var pathString = lineGenerator(data);
 d3.select('path')
 	.attr('d', pathString);
 ```
+
+#### transition
+
+1. selectAll(…).transition() defines several transitions
+2. each transition runs independantly
+3. the use of transition().delay(…), transition().duration()
+
+* transitions provide only a subset of selection functionality
+* Transitions are a limited form of key frame animation with only two key frames: start and end.
+
+```javascript
+// transition 一种用途是,需要修改inherited value的时候, e.g.,
+d3.select("body")
+    .style("color", "green") // make the body green
+  .transition()
+	.style("color", "red"); // then transition to red
+```	
+
+If the transition has a delay, then the starting value should be set only when the transition starts. You can do this by listening for the start event:
+
+``` javascript
+d3.select("body").transition()
+    .delay(750)
+    .each("start", function() { d3.select(this).style("color", "green"); })
+    .style("color", "red");
+```
