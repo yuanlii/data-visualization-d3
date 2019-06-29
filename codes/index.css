@@ -1,3 +1,30 @@
 .bar-chart {
     background-color: #C7D9D9;
     }
+
+.bar {
+    fill: #E1C340; 
+}
+
+.svg-container {
+    background-color: #FFC988;
+    }
+
+.path {
+    fill: none;
+    stroke: #E1C340;
+    }
+
+.body {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 9px;
+}
+
+.links {
+    fill: none;
+    stroke: #ccc;
+}
+
+.nodes {
+    fill: #E1C340; 
+}

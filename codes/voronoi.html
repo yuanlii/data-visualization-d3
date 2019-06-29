@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <title>Learn D3.js</title>
+    </head>
+
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, sans-serif;
+            font-size: 12px;
+        }
+
+        path {
+            stroke: #fafafa;
+            fill: white;
+            cursor: pointer;
+            opacity: 0;
+        }
+
+        circle {
+            fill: #888;
+        }
+
+        g.wrapper g.hovered circle {
+            fill: red;
+        }
+
+        g.wrapper .points.voronoi-visible path {
+            stroke: #aaa;
+            opacity: 1;
+            stroke-width: 1px;
+        }
+
+        .halo {
+            stroke-width: 2;
+            fill: none;
+            stroke: black;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        .menu .item {
+            display: inline-block;
+            margin-right: 10px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .menu .item.active {
+            font-weight: bold;
+        }
+    </style>
+
+    <body>
+        <svg width='800' height='600'>
+            <g class="wrapper" transform="translate(10,10)">
+                <g class="points"></g>
+                <circle class="halo" r="7"></circle>
+            </g>
+        </svg>
+
+        <div class="menu">
+            <div class="item voronoi" onClick="toggleVoronoi();">Enable Voronoi</div>
+            <div class="item voronoi-visible" onClick="toggleVoronoiVisibility();">Show Voronoi</div>
+        </div>
+        
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>

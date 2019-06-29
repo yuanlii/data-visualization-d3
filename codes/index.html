@@ -3,12 +3,31 @@
         <link rel="stylesheet" href="index.css">
         <title>Learn D3.js</title>
     </head>
+
+    <style>
+        rect {
+	        fill: #ddd;
+        }        
+    </style>
+
     <body>
-        
-        <h1>First heading</h1>
-        <svg class = "bar-chart"></svg>
+        <!-- begin by creating several squares  -->
+        <svg width='800' height='600'>
+            <g transform="translate(70, 20)">
+                <rect width="30" height="30" y="0" />
+                <rect width="30" height="30" y="40" />
+                <rect width="30" height="30" y="80" />
+                <rect width="30" height="30" y="120" />
+            </g>
+        </svg>
+
+        <!-- define an action button -->
+        <div class="menu">
+            <button onClick="update();">Click to update rect elements using function(d, i)</button>
+        </div>
         
         <script src="https://d3js.org/d3.v4.min.js"></script>
+        <!-- reference to index.js -->
         <script src="index.js"></script>
     </body>
 </html>
