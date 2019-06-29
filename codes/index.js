@@ -1,7 +1,9 @@
+function positionRects(d, i) {
+	return i * 40;
+  }
 
 function update() {
 	d3.selectAll('rect')
-		.attr('x', function(d, i) {
-			return i * 40;
-		});
+		.attr('x', positionRects
+		);
 }
