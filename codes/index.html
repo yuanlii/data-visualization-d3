@@ -5,29 +5,45 @@
     </head>
 
     <style>
-        rect {
-	        fill: #ddd;
-        }        
+        body {
+            font-family: "Helvetica Neue", Helvetica, sans-serif;
+            font-size: 14px;
+            color: #333;
+        }   
+        circle {
+	        fill: orange;
+        }  
+        g.item text {
+            fill: #ddd;
+            font-size: 70px;
+            text-anchor: middle;
+            font-weight: bold;
+        }
     </style>
 
     <body>
-        <!-- begin by creating several squares  -->
-        <svg width='800' height='600'>
-            <g transform="translate(70, 20)">
-                <rect width="30" height="30" y="0" />
-                <rect width="30" height="30" y="40" />
-                <rect width="30" height="30" y="80" />
-                <rect width="30" height="30" y="120" />
+        <!-- create an empty container first -->
+        <svg width='800' height='140'>
+            <g transform="translate(70, 70)">
+                <g class="item" transform="translate(0, 0)"><circle r="40" /></g>
+                <g class="item" transform="translate(120, 0)"><circle r="40" /></g>
+                <g class="item" transform="translate(240, 0)"><circle r="40" /></g>
             </g>
         </svg>
-
-        <!-- define an action button -->
-        <div class="menu">
-            <button onClick="update();">Click to update rect elements using function(d, i)</button>
-        </div>
         
         <script src="https://d3js.org/d3.v4.min.js"></script>
         <!-- reference to index.js -->
-        <script src="index.js"></script>
+        <script>
+            d3.selectAll('g.item')
+            .append('text')
+            // add text to each g.item
+            .text(function(d, i) {
+                return i + 1;
+            })
+            //   specify the position of the item
+                .attr('y', 50)
+                .attr('x', 30);
+
+        </script>
     </body>
 </html>
