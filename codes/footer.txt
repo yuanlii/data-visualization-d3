@@ -1,0 +1,78 @@
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Baloo+Thambi');
+
+   * {
+     margin:0;
+     padding:0;
+     font-family: Baloo Thambi;
+   }
+
+   h1 {
+     font-size:16px sans-serif;
+     margin-left: 10px;
+     line-height:0.2em;
+     font-weight: bold;
+     font-family: Baloo Thambi;
+   }
+
+   h2 {
+     font: 15px sans-serif;
+     margin-left: 10px;
+     line-height:0.2em;
+     font-weight: bold;
+     font-family: Baloo Thambi;
+   }
+   
+   p {
+     fill: #8FA2AC;
+     font-family: Baloo Thambi;
+     font-size: 12px;
+   }
+</style>
+
+</head>
+
+<body>
+   <div id='title' style='width:1366px;'>
+      <h1>Title</h1>
+      <h2>Subtitle</h2>
+      <br></br>
+   </div>
+   <div id='vis' style='width:1366px;'>
+       <svg class='chart-outer'><g class='chart'></g></svg>
+   </div>
+   <div id='caption' style='width:1366px;'>
+      <p style='text-align:right'>Caption</p>
+   </div>
+
+<script>
+
+  var data = JSON.parse(document.getElementById('data').innerHTML);
+  var vis_width = 1366;
+  var vis_height = 650;
+  var params = {};
+  
+  draw = function(data, vis_width, vis_height, params) {
+
+      var margin = {top: 30, right: 50, bottom: 30, left: 50};
+      var width = vis_width - margin.left - margin.right,
+          height = vis_height - margin.top - margin.bottom;
+      
+      d3.select('.chart-outer')
+          .attr('width', vis_width)
+          .attr('height', vis_height);
+
+      var svg = d3.select('.chart').append('svg')
+            .attr('width', vis_width)
+            .attr('height', vis_width)
+          .append('g')
+            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+  }
+  
+  draw(data,vis_width,vis_height,params);
+  
+</script>
+</body>
+</html>

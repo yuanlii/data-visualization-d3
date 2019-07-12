@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <style>
+            /* @import url('https://fonts.googleapis.com/css?family=Baloo+Thambi'); */
+        @import url('https://fonts.googleapis.com/css?family=Baloo+Thambi&display=swap');
+        h1 {
+            fill: #8FA2AC;
+            font-family: Baloo Thambi !important;
+            font-size: 16px;
+            }
+        h2 {
+            fill: #8FA2AC;
+            font-family: Baloo Thambi;
+            font-size: 15px;
+            }
+             
+        p {
+            fill: #8FA2AC;
+            font-family: Baloo Thambi;
+            font-size: 12px;
+        }
+
+        .chart {
+            font-family: Baloo Thambi;
+            }
+        </style>
+
+
+    <script src='https://d3js.org/d3.v5.min.js'></script>
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+    <script src='https://rawgit.com/jashkenas/underscore/master/underscore-min.js'></script>  
+    <!-- <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet'> -->
+    
+
+</head>
+<body>
+    <div id='title' style='width:1366px;'>
+        <h1>Title</h1>
+        <h2>Subtitle</h2>
+    </div>
+    <div id='vis' style='width:1366px;'>
+        <svg class='chart-outer'><g class='chart'></g></svg>
+    </div>
+    <div id='caption' style='width:1366px;'>
+        <p style='text-align:right'>Caption</p>
+    </div>
+
+    <script>
+            var vis_width = 1366;
+            var vis_height = 650;
+            var params = {};
+          draw = function(data, vis_width, vis_height, params) {
+          var margin = {top: 30, right: 30, bottom: 30, left: 30};
+                var width = vis_width - margin.left - margin.right,
+                    height = vis_height - margin.top - margin.bottom;
+         // select objects with class .chart-outer
+          d3.select('.chart-outer')
+                    .attr('width', vis_width)
+                    .attr('height', vis_height);
+
+          var svg = d3.select('.chart').append('svg')
+                      .attr('width', vis_width)
+                      .attr('height', vis_width)
+                    .append('g')
+                      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+            }
+          draw(data,vis_width,vis_height,params);
+
+    
+
+          </script>
+
+</body>
+</html>
